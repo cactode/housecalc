@@ -1,6 +1,6 @@
 # housecalc
 
-Contributions welcome!
+A single-page webapp to calculate house and rent prices.
 
 ## Recommended IDE Setup
 
@@ -37,6 +37,12 @@ yarn dev
 yarn build
 ```
 
+### Regenerate Proto Files
+
+```sh
+yarn proto
+```
+
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
@@ -47,4 +53,10 @@ yarn test:unit
 
 ```sh
 yarn lint
+```
+
+### Format with Prettier
+
+```sh
+yarn format
 ```
