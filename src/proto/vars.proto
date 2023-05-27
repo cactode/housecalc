@@ -1,0 +1,68 @@
+// these are used exclusively for serializing data to a query string efficiently
+// it's ugly, but it works lol
+
+syntax = "proto3";
+
+message AllVars {
+    int32 version = 1;
+    BasicVars basicVars = 2;
+    repeated MortgageVars mortgageVars = 3;
+}
+
+message MortgageVars {
+    int32 startYear = 1;
+    double downPct = 2;
+    double interestPct = 3;
+    double pmiPct = 4;
+    int32 termYear = 5;
+    double startFeePct = 6;
+    double startFee = 7;
+    double points = 8;
+    bool isArm = 9;
+    Arm arm = 10;
+}
+
+message Arm {
+    double interestFloatPct = 1;
+    int32 fixedYear = 2;
+}
+
+message BasicVars {
+    House house = 1;
+    Rent rent = 2;
+    Taxes taxes = 3;
+    Financial financial = 4;
+}
+
+message House {
+    double price = 1;
+    double apprecPct = 2;
+    double remodelCost = 3;
+    double utilitiesMonth = 4;
+    double upkeepYear = 5;
+    double insurancePct = 6;
+    double hoaMonth = 7;
+    double sellingFeesPct = 8;
+    double sellingFees = 9;
+}
+
+message Rent {
+    double priceMonth = 1;
+    double utilitiesMonth = 2;
+    double apprecPct = 3;
+}
+
+message Taxes {
+    bool singleFiler = 1;
+    double itemDeductions = 2;
+    double propertyPct = 3;
+    bool addReet = 4;
+    double reetLocalPct = 5;
+}
+
+message Financial {
+    double incomeYear = 1;
+    double investPct = 2;
+    double inflatePct = 3;
+    int32 sellYear = 4;
+}
