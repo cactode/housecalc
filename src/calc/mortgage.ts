@@ -58,7 +58,7 @@ export function principal(P: number, r: number, N: number): number {
 }
 
 export function applyMortgageStart(vars: BasicVars, mortgage: MortgageVars, paid: Paid) {
-  paid.principal = Math.max(vars.house.price, paid.principal + vars.house.price * mortgage.downPct)
+  paid.principal = Math.min(vars.house.price, paid.principal + vars.house.price * mortgage.downPct)
   const debt = vars.house.price - paid.principal
   const pointsPct = mortgage.points * 0.01
   paid.expenses += debt * (mortgage.startFeePct + pointsPct) + mortgage.startFee
