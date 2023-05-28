@@ -25,11 +25,8 @@ const inputs = computed({
 </script>
 
 <template>
-  <q-list bordered separator>
-    <q-item-label header>
-      <slot></slot>
-      INPUTS
-    </q-item-label>
+  <q-list bordered separator class="rounded-borders">
+    <q-item-label header> INPUTS </q-item-label>
     <q-expansion-item bordered expand-separator label="House Variables" icon="home" default-opened>
       <NumSlideInput
         title="Ownership Period"
@@ -59,8 +56,13 @@ const inputs = computed({
         :max="10"
         v-model="inputs.house.apprecPct"
       >
-        The yearly appreciation rate of the house's valuation. The default value is the historical
-        average over the last 30 years in King County, Washington.
+        The yearly appreciation rate of the house's valuation. This is not inflation-adjusted.
+        <br />
+        The default value is the historical average from 2004-2019 in King County, Washington, as
+        determined from the Home Price Index from the U.S FHFA.
+        <br />
+        Note that this number is extremely hard to predict and is intrinsically tied to the economy
+        in general.
       </NumSlideInput>
       <NumSlideInput
         title="Remodeling Costs"
@@ -71,6 +73,23 @@ const inputs = computed({
       >
         One-time costs of remodeling the house after purchase. This can include things like
         painting, new flooring, new appliances, etc.
+      </NumSlideInput>
+      <NumSlideInput
+        title="Seller Credits"
+        :type="CalcInputType.Dollar"
+        :min="0"
+        :max="200000"
+        v-model="inputs.house.sellerCredits"
+      >
+        Money received from the seller to cover closing costs, repairs, etc.
+        <br />
+        This is treated as a "rebate" and does not reduce the assessed purchase value of the house.
+        <br />
+        Credits are not treated as general income and are not taxed, but they will be considered
+        profit for capital gains tax purposes.
+        <br />
+        Seller credits cannot exceed 3% of the purchase price if 0%-10% is put down, 6% if 10%-25%
+        is put down, or 9% if more than 25% is put down.
       </NumSlideInput>
       <NumSlideInput
         title="Monthly Utilities Costs"
@@ -164,8 +183,13 @@ const inputs = computed({
         :max="10"
         v-model="inputs.rent.apprecPct"
       >
-        The yearly appreciation rate of rent prices. The default value is the historical average
-        over the last 30 years in King County.
+        The yearly appreciation rate of rent prices. This is not inflation-adjusted.
+        <br />
+        The default value is the historical average over 2005-2019 in King County, Washington as
+        determined from census data.
+        <br />
+        Note that this number is extremely hard to predict and is intrinsically tied to the economy
+        in general.
       </NumSlideInput>
     </q-expansion-item>
     <q-expansion-item bordered expand-separator label="Tax Variables" icon="account_balance">

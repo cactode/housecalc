@@ -3,8 +3,9 @@ import type { BasicVars, MortgageVars } from '@/calc/types'
 const DEFAULT_VARS: BasicVars = {
   house: {
     price: 800000,
-    apprecPct: 0.035,
+    apprecPct: 0.048,
     remodelCost: 10000,
+    sellerCredits: 0,
     upkeepYear: 2000,
     utilitiesMonth: 150,
     insurancePct: 0.001,
@@ -28,7 +29,7 @@ const DEFAULT_VARS: BasicVars = {
   rent: {
     priceMonth: 3000,
     utilitiesMonth: 100,
-    apprecPct: 0.035
+    apprecPct: 0.032
   }
 }
 

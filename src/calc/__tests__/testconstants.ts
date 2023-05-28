@@ -6,6 +6,7 @@ export const TEST_INPUTS: BasicVars = {
     apprecPct: 0.035,
     remodelCost: 15000,
     upkeepYear: 2500,
+    sellerCredits: 0,
     utilitiesMonth: 150,
     insurancePct: 0.001,
     hoaMonth: 0,

@@ -35,7 +35,7 @@ const houseIsBestGain = computed(() => houseNetGain.value > rentNetGain.value)
     <thead class="bg-primary text-white">
       <tr>
         <th colspan="3" class="text-left">
-          <div class="text-h6">Totals</div>
+          <div class="text-body2">SUMMARY</div>
         </th>
       </tr>
     </thead>

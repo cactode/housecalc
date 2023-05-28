@@ -38,6 +38,7 @@ export interface House {
   price: number
   apprecPct: number
   remodelCost: number
+  sellerCredits: number
   utilitiesMonth: number
   upkeepYear: number
   insurancePct: number
@@ -534,6 +535,7 @@ function createBaseHouse(): House {
     price: 0,
     apprecPct: 0,
     remodelCost: 0,
+    sellerCredits: 0,
     utilitiesMonth: 0,
     upkeepYear: 0,
     insurancePct: 0,
@@ -554,23 +556,26 @@ export const House = {
     if (message.remodelCost !== 0) {
       writer.uint32(25).double(message.remodelCost)
     }
+    if (message.sellerCredits !== 0) {
+      writer.uint32(33).double(message.sellerCredits)
+    }
     if (message.utilitiesMonth !== 0) {
-      writer.uint32(33).double(message.utilitiesMonth)
+      writer.uint32(41).double(message.utilitiesMonth)
     }
     if (message.upkeepYear !== 0) {
-      writer.uint32(41).double(message.upkeepYear)
+      writer.uint32(49).double(message.upkeepYear)
     }
     if (message.insurancePct !== 0) {
-      writer.uint32(49).double(message.insurancePct)
+      writer.uint32(57).double(message.insurancePct)
     }
     if (message.hoaMonth !== 0) {
-      writer.uint32(57).double(message.hoaMonth)
+      writer.uint32(65).double(message.hoaMonth)
     }
     if (message.sellingFeesPct !== 0) {
-      writer.uint32(65).double(message.sellingFeesPct)
+      writer.uint32(73).double(message.sellingFeesPct)
     }
     if (message.sellingFees !== 0) {
-      writer.uint32(73).double(message.sellingFees)
+      writer.uint32(81).double(message.sellingFees)
     }
     return writer
   },
@@ -608,38 +613,45 @@ export const House = {
             break
           }
 
-          message.utilitiesMonth = reader.double()
+          message.sellerCredits = reader.double()
           continue
         case 5:
           if (tag !== 41) {
             break
           }
 
-          message.upkeepYear = reader.double()
+          message.utilitiesMonth = reader.double()
           continue
         case 6:
           if (tag !== 49) {
             break
           }
 
-          message.insurancePct = reader.double()
+          message.upkeepYear = reader.double()
           continue
         case 7:
           if (tag !== 57) {
             break
           }
 
-          message.hoaMonth = reader.double()
+          message.insurancePct = reader.double()
           continue
         case 8:
           if (tag !== 65) {
             break
           }
 
-          message.sellingFeesPct = reader.double()
+          message.hoaMonth = reader.double()
           continue
         case 9:
           if (tag !== 73) {
+            break
+          }
+
+          message.sellingFeesPct = reader.double()
+          continue
+        case 10:
+          if (tag !== 81) {
             break
           }
 
@@ -659,6 +671,7 @@ export const House = {
       price: isSet(object.price) ? Number(object.price) : 0,
       apprecPct: isSet(object.apprecPct) ? Number(object.apprecPct) : 0,
       remodelCost: isSet(object.remodelCost) ? Number(object.remodelCost) : 0,
+      sellerCredits: isSet(object.sellerCredits) ? Number(object.sellerCredits) : 0,
       utilitiesMonth: isSet(object.utilitiesMonth) ? Number(object.utilitiesMonth) : 0,
       upkeepYear: isSet(object.upkeepYear) ? Number(object.upkeepYear) : 0,
       insurancePct: isSet(object.insurancePct) ? Number(object.insurancePct) : 0,
@@ -673,6 +686,7 @@ export const House = {
     message.price !== undefined && (obj.price = message.price)
     message.apprecPct !== undefined && (obj.apprecPct = message.apprecPct)
     message.remodelCost !== undefined && (obj.remodelCost = message.remodelCost)
+    message.sellerCredits !== undefined && (obj.sellerCredits = message.sellerCredits)
     message.utilitiesMonth !== undefined && (obj.utilitiesMonth = message.utilitiesMonth)
     message.upkeepYear !== undefined && (obj.upkeepYear = message.upkeepYear)
     message.insurancePct !== undefined && (obj.insurancePct = message.insurancePct)
@@ -691,6 +705,7 @@ export const House = {
     message.price = object.price ?? 0
     message.apprecPct = object.apprecPct ?? 0
     message.remodelCost = object.remodelCost ?? 0
+    message.sellerCredits = object.sellerCredits ?? 0
     message.utilitiesMonth = object.utilitiesMonth ?? 0
     message.upkeepYear = object.upkeepYear ?? 0
     message.insurancePct = object.insurancePct ?? 0

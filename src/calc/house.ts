@@ -13,7 +13,7 @@ import {
  * @param paid
  */
 export function applyHouseExpensesBuying(vars: BasicVars, paid: Paid) {
-  paid.expenses += vars.house.remodelCost
+  paid.expenses += vars.house.remodelCost - vars.house.sellerCredits
 }
 
 /**
@@ -48,7 +48,7 @@ export function applyHouseExpensesTaxesYear(vars: BasicVars, paid: Paid, year: n
  * Assumes that:
  * - Selling fees are paid on the total sale price
  * - Capital gains tax is paid on the profit of the sale minus the capital gains exemption
- * - Sales tax is paid on the total sale price (REET tax) in Washington
+ * - Sales tax is paid on the total sale price (REET tax) in Washington if required
  * @param vars
  * @param paid
  */
@@ -58,7 +58,7 @@ export function applyHouseExpensesSelling(vars: BasicVars, paid: Paid) {
     vars.house.apprecPct,
     vars.financial.sellYear
   )
-  const profit = housePriceFinal - vars.house.price
+  const taxableProfit = housePriceFinal - vars.house.price + vars.house.sellerCredits
 
   const fees = vars.house.sellingFeesPct * housePriceFinal + vars.house.sellingFees
 
@@ -67,7 +67,7 @@ export function applyHouseExpensesSelling(vars: BasicVars, paid: Paid) {
     getBracketTax(housePriceFinal, WASHINGTON_REET_TAX_TABLE)
   const capitalGainsTax = getCapitalGainsTax(
     vars.financial.incomeYear,
-    profit,
+    taxableProfit,
     vars.taxes.singleFiler ? CAPITAL_GAINS_TAX_TABLE_SINGLE : CAPITAL_GAINS_TAX_TABLE_JOINT
   )
   const totalTax = (vars.taxes.addReet ? reetTax : 0) + capitalGainsTax

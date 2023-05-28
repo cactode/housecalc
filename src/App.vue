@@ -18,12 +18,7 @@ const mortgageVars = ref(restored.mortgageVars)
 const calcHouseOutput = computed(() => calcHouse(vars.value, mortgageVars.value))
 const calcRentOutput = computed(() => calcRent(vars.value))
 
-const leftDrawerOpen = ref(false)
 const helpOpen = ref(false)
-
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
-}
 
 function share() {
   saveToQueryString(vars.value, mortgageVars.value)
@@ -38,11 +33,12 @@ function share() {
   <q-layout view="hHh LpR fFf">
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
         <q-toolbar-title>
-          <q-avatar>
-            <img src="favicon.png" />
-          </q-avatar>
+          <a href="./">
+            <q-avatar>
+              <img src="favicon.png" />
+            </q-avatar>
+          </a>
           <span class="q-pl-md" v-if="$q.screen.gt.sm">cactode's house vs. rent calculator</span>
         </q-toolbar-title>
         <q-btn class="q-ma-sm bg-secondary" @click="share()" label="Share" icon="share" />
@@ -50,33 +46,19 @@ function share() {
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      show-if-above
-      :width="Math.min(600, $q.screen.width)"
-      v-model="leftDrawerOpen"
-      side="left"
-      bordered
-    >
-      <BasicInputs v-model="vars">
-        <q-btn
-          v-if="$q.screen.lt.md"
-          dense
-          flat
-          round
-          icon="arrow_back"
-          @click="toggleLeftDrawer"
-        />
-      </BasicInputs>
-      <MortgageInputs :vars="vars" v-model="mortgageVars"></MortgageInputs>
-    </q-drawer>
-
     <q-page-container>
-      <div class="q-pa-md q-mx-auto" style="max-width: 100em">
-        <div class="q-pb-md">
-          <CalcSummary :calcHouse="calcHouseOutput" :calcRent="calcRentOutput"></CalcSummary>
+      <div class="q-mx-auto row" :style="`max-width: ${$q.screen.sizes.xl}px`">
+        <div class="col-md-4 col-12 q-pa-md">
+          <BasicInputs v-model="vars"></BasicInputs>
+          <MortgageInputs :vars="vars" v-model="mortgageVars"></MortgageInputs>
         </div>
-        <div class="q-pt-md">
-          <ChartTabs :calcHouse="calcHouseOutput" :calcRent="calcRentOutput"></ChartTabs>
+        <div class="col-md-8 col-12">
+          <div class="q-pa-md">
+            <CalcSummary :calcHouse="calcHouseOutput" :calcRent="calcRentOutput"></CalcSummary>
+          </div>
+          <div class="q-pa-md">
+            <ChartTabs :calcHouse="calcHouseOutput" :calcRent="calcRentOutput"></ChartTabs>
+          </div>
         </div>
       </div>
     </q-page-container>
@@ -87,7 +69,7 @@ function share() {
       <q-toolbar>
         made with <q-icon name="favorite" color="red" class="q-mx-xs"></q-icon> by
         <a class="q-ml-xs text-white" href="https://cactode.club">cactode</a>.
-        <a class="q-mx-xs text-white" href="https://github.com/cactode/housecalc">source</a>
+        <a class="q-mx-xs text-white" href="https://github.com/cactode/housecalc">source code</a>
       </q-toolbar>
     </q-footer>
   </q-layout>

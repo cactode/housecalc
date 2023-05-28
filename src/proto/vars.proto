@@ -38,12 +38,13 @@ message House {
     double price = 1;
     double apprecPct = 2;
     double remodelCost = 3;
-    double utilitiesMonth = 4;
-    double upkeepYear = 5;
-    double insurancePct = 6;
-    double hoaMonth = 7;
-    double sellingFeesPct = 8;
-    double sellingFees = 9;
+    double sellerCredits = 4;
+    double utilitiesMonth = 5;
+    double upkeepYear = 6;
+    double insurancePct = 7;
+    double hoaMonth = 8;
+    double sellingFeesPct = 9;
+    double sellingFees = 10;
 }
 
 message Rent {

@@ -5,6 +5,7 @@ import { applyMortgageYear, principal } from '@/calc/mortgage'
 import { TEST_INPUTS, TEST_FIXED_MORTGAGE } from './testconstants'
 import type { Paid } from '@/calc/types'
 
+// this should probably have more tests, but nah
 describe('Mortgage', () => {
   it('calculates principals', () => {
     const result = principal(100000, 0.05, 100)
