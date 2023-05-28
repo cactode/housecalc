@@ -30,7 +30,7 @@ function share() {
 </script>
 
 <template>
-  <q-layout view="hHh LpR fFf">
+  <q-layout view="hHh LpR fff">
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title>
