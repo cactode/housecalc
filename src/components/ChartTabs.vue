@@ -101,7 +101,7 @@ const currentTitleDataset = computed(() => {
     case 'yearly':
       return { title: 'Total Paid (Year By Year)', dataset: yearlyDataset.value }
     case 'recurring':
-      return { title: 'Estimated Recurring Monthly Payments', dataset: recurringDataset.value }
+      return { title: 'Recurring Monthly Payments', dataset: recurringDataset.value }
     default:
       throw new Error(`Unknown tab: ${tab.value}`)
   }
@@ -111,9 +111,9 @@ const currentTitleDataset = computed(() => {
 <template>
   <q-card>
     <q-tabs v-model="tab" class="bg-primary text-white" align="justify">
-      <q-tab name="totals" label="Totals"></q-tab>
+      <q-tab name="totals" label="Cumulative"></q-tab>
       <q-tab name="yearly" label="Yearly"></q-tab>
-      <q-tab name="recurring" label="Recurring Monthly"></q-tab>
+      <q-tab name="recurring" label="Recurring"></q-tab>
     </q-tabs>
     <q-separator />
     <ChartBase
@@ -121,5 +121,8 @@ const currentTitleDataset = computed(() => {
       :title="currentTitleDataset.title"
       :data="currentTitleDataset.dataset"
     ></ChartBase>
+    <div v-if="tab != 'recurring'" class="text-subtitle text-grey text-center">
+      Excludes selling profits
+    </div>
   </q-card>
 </template>

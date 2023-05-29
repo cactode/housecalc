@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import imgUrl from '@/assets/born-to-die.gif'
+import HelpTooltip from '@/components/HelpTooltip.vue'
 
 const props = defineProps<{
   modelValue: boolean
@@ -40,9 +41,9 @@ const help = computed({
             much money you'll save or lose in the long run, but it's hard to figure out which
             variables matter and which ones don't.
             <br /><br />
-            This calculator is designed to give you an easy way to "fiddle" with the knobs
-            (literally!) and explore how they affect things like long-term profits, short-term
-            mortgage payments, etc.
+            This calculator is designed to give you an easy way to "fiddle" with the knobs and
+            explore how they affect things like long-term profits, short-term mortgage payments,
+            etc.
             <br /><br />
             This calculator also strives to be as <i>accurate</i> as possible. Factors including
             refinancing, mortgage interest deductions, opportunity cost and more are included.
@@ -51,9 +52,14 @@ const help = computed({
           <div class="text-h6">How do I use it?</div>
           <div class="text-body1">
             Use the sliders on the left to change the calculator's inputs. The tables and charts on
-            the right will automatically update themselves. If you don't know what something means,
-            click the <q-icon name="help_outline" color="grey-8" size="xs"></q-icon> for more
-            details. <br /><br />
+            the right will automatically update themselves. The "Summary" table shows the financial
+            breakdown of your expenses and gains after your ownership period ends and you sell your
+            house. The "Charts" section shows how your expenses and gains change over time.
+            <br /><br />
+            If you don't know what something means, click the
+            <HelpTooltip>Don't click this one, though. This one is useless.</HelpTooltip>
+            for more details.
+            <br /><br />
             By default, the calculator assumes that you'll have one mortgage for the duration of the
             loan. If you want to change mortgages (e.g. refinancing for a better rate, changing the
             loan type from ARM to Fixed), you can click "Add Mortgage" and use the "Start" input to
@@ -112,12 +118,19 @@ const help = computed({
             values are best estimates - make sure you change them to fit your exact situation!
           </div>
           <br />
+          <div class="text-h6">I found a mistake in the math!</div>
+          <div class="text-body1">
+            Woops!
+            <a href="https://github.com/cactode/housecalc/issues"
+              >Please let me know so I can fix it!</a
+            >
+          </div>
+          <br />
           <div class="text-h6">Why does the UX look terrible?</div>
           <q-img :src="imgUrl" style="max-width: 256px"></q-img>
           <div class="text-body1">
-            I'm not a webdev, so I'm slapping this together using Quasar's UI components. I'm sure
-            there are better ways to do this, but I'm not sure what they are. If you have any
-            suggestions, please let me know! PRs are always welcome.
+            I'm not a webdev, so I'm slapping this together using Quasar's UI components. It's not
+            much, but it's honest work.
           </div>
         </div>
       </q-card-section>

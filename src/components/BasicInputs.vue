@@ -84,8 +84,9 @@ const inputs = computed({
         Money received from the seller to cover closing costs, repairs, etc.
         <br />
         This is treated as a "rebate" and does not reduce the assessed purchase value of the house.
+        Rather, it decreases your total expenses.
         <br />
-        Credits are not treated as general income and are not taxed, but they will be considered
+        Credits are not treated as general income and are not taxed, but they will be taxed as
         profit for capital gains tax purposes.
         <br />
         Seller credits cannot exceed 3% of the purchase price if 0%-10% is put down, 6% if 10%-25%
