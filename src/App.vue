@@ -39,7 +39,7 @@ function share() {
               <img src="favicon.png" />
             </q-avatar>
           </a>
-          <span class="q-pl-md" v-if="$q.screen.gt.sm">cactode's house vs. rent calculator</span>
+          <span class="q-pl-md" v-if="$q.screen.gt.sm">cactode's house & rent calculator</span>
         </q-toolbar-title>
         <q-btn class="q-ma-sm bg-secondary" @click="share()" label="Share" icon="share" />
         <q-btn class="q-ma-sm bg-grey-9" @click="helpOpen = true" label="Help" icon="help" />
