@@ -141,7 +141,7 @@ function removeMortgage(index: number) {
         purchase price but can be as low as 3.5% for an FHA loan.
       </NumSlideInput>
       <NumSlideInput
-        title="Loan Origination Fee Percent"
+        title="Loan Origination Percent Fees"
         v-model="mortgage.startFeePct"
         :type="CalcInputType.Percent"
         :min="0"
@@ -151,7 +151,7 @@ function removeMortgage(index: number) {
         amount.
       </NumSlideInput>
       <NumSlideInput
-        title="Loan Origination Fee Percent"
+        title="Loan Origination Fees"
         v-model="mortgage.startFee"
         :type="CalcInputType.Dollar"
         :min="0"
