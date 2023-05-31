@@ -183,7 +183,8 @@ function removeMortgage(index: number) {
             <HelpTooltip>
               Whether or not this mortgage is an ARM loan.
               <br />
-              ARM loans stay at a fixed rate for several years before switching to a "floating" rate.
+              ARM loans stay at a fixed rate for several years before switching to a "floating"
+              rate.
               <br />
               The floating rate varies with market conditions and can be lower or higher.
             </HelpTooltip>
