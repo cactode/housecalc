@@ -2,6 +2,7 @@
 import { CalcInputType, type BasicVars, type MortgageVars } from '@/calc/types'
 import { computed, type ComputedRef } from 'vue'
 import { getDefaultMortgage } from '@/stores/defaults'
+import HelpTooltip from '@/components/HelpTooltip.vue'
 import NumSlideInput from '@/components/NumSlideInput.vue'
 
 const props = defineProps<{
@@ -68,13 +69,6 @@ function removeMortgage(index: number) {
       <template v-slot:header>
         <q-item-section>
           <q-item-label>Mortgage #{{ index + 1 }}</q-item-label>
-        </q-item-section>
-        <q-item-section side>
-          <q-toggle
-            v-model="mortgage.isArm"
-            color="primary"
-            :label="mortgage.isArm ? 'ARM' : 'Fixed'"
-          ></q-toggle>
         </q-item-section>
         <q-item-section side>
           <q-btn
@@ -182,6 +176,23 @@ function removeMortgage(index: number) {
         <br />
         This can be set to 0% if this loan is exempt from PMI.
       </NumSlideInput>
+      <q-item>
+        <q-item-section>
+          <q-item-label>
+            ARM Mortgage
+            <HelpTooltip>
+              Whether or not this mortgage is an ARM loan.
+              <br />
+              ARM loans stay at a fixed rate for several years before switching to a "floating" rate.
+              <br />
+              The floating rate varies with market conditions and can be lower or higher.
+            </HelpTooltip>
+          </q-item-label>
+        </q-item-section>
+        <q-item-section side>
+          <q-toggle v-model="mortgage.isArm" :label="mortgage.isArm ? 'ARM' : 'Fixed'"></q-toggle>
+        </q-item-section>
+      </q-item>
       <div v-if="mortgage.isArm">
         <NumSlideInput
           title="ARM Fixed Rate Term"

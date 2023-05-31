@@ -23,43 +23,43 @@ function generatePaidDatasets(
           label: 'House Principal',
           data: paidHouse.value.map((row) => row.principal),
           stack: 'house',
-          backgroundColor: '#4bc0c0'
+          backgroundColor: '#648FFF'
         },
         {
           label: 'House Interest',
           data: paidHouse.value.map((row) => row.interest),
           stack: 'house',
-          backgroundColor: '#ff6384'
+          backgroundColor: '#DC267F'
         },
         {
           label: 'House Expenses',
           data: paidHouse.value.map((row) => row.expenses),
           stack: 'house',
-          backgroundColor: '#ff9f40'
+          backgroundColor: '#FE6100'
         },
         {
           label: 'House Taxes',
           data: paidHouse.value.map((row) => row.taxes),
           stack: 'house',
-          backgroundColor: '#ffcd56'
+          backgroundColor: '#FFB000'
         },
         {
           label: 'House Opportunity',
           data: paidHouse.value.map((row) => row.opportunity),
           stack: 'house',
-          backgroundColor: '#c9cbcf'
+          backgroundColor: '#C9CBCF'
         },
         {
           label: 'Rent Payments',
           data: paidRent.value.map((row) => row.expenses),
           stack: 'rent',
-          backgroundColor: '#ff9f40'
+          backgroundColor: '#FE6100'
         },
         {
           label: 'Rent Opportunity',
           data: paidRent.value.map((row) => row.opportunity),
           stack: 'rent',
-          backgroundColor: '#c9cbcf'
+          backgroundColor: '#C9CBCF'
         }
       ]
     }
@@ -82,13 +82,13 @@ const recurringDataset: ComputedRef<ChartData<'bar', number[], number>> = comput
         label: 'House Payments',
         data: props.calcHouse.recurringYearly.map((row) => (row == 0 ? 0 : row / 12)),
         stack: 'house',
-        backgroundColor: '#4bc0c0'
+        backgroundColor: '#648FFF'
       },
       {
         label: 'Rent Payments',
         data: props.calcRent.recurringYearly.map((row) => (row == 0 ? 0 : row / 12)),
         stack: 'rent',
-        backgroundColor: '#ff9f40'
+        backgroundColor: '#FE6100'
       }
     ]
   }
