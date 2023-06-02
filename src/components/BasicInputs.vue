@@ -240,14 +240,19 @@ const inputs = computed({
         be used.
       </NumSlideInput>
       <NumSlideInput
-        title="Property Tax Percentage"
+        title="State Property Tax Percentage"
         :type="CalcInputType.Percent"
         :min="0"
         :max="3"
         v-model="inputs.taxes.propertyPct"
       >
         Yearly property tax as a percentage of the current house price. Accounts for house value
-        appreciation. The default value is for King County, Washington
+        appreciation.
+        <br />
+        Property tax is charged exclusively at the state level (if at all). It may vary based on
+        your location or income.
+        <br />
+        The default value is for King County, Washington.
       </NumSlideInput>
       <q-item>
         <q-item-section>

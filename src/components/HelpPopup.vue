@@ -91,10 +91,10 @@ const help = computed({
               <li><i>etc...</i></li>
             </ul>
           </div>
-          <div class="text-h6">My state charges extra taxes. What about those?</div>
+          <div class="text-h6">My state charges extra sales taxes. What about those?</div>
           <div class="text-body1">
             If you live in Washington (me too!), you're in luck. This calculator can apply
-            Washington's REET taxes if you turn on the "Add Washington-Specific Taxes" toggle.
+            Washington's REET sales taxes if you turn on the "Add Washington-Specific Taxes" toggle.
             <br /><br />
             Otherwise, you'll need to factor those in by hand.
           </div>
