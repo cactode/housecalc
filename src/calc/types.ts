@@ -42,6 +42,7 @@ export interface CalcRentOutput {
   paidYearly: Array<Paid>
   recurringYearly: Array<number>
   netLosses: number
+  depositRevenue: number
 }
 
 // these are defined as proto types in src/proto/vars.ts

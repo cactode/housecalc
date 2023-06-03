@@ -159,13 +159,33 @@ const inputs = computed({
     </q-expansion-item>
     <q-expansion-item bordered expand-separator label="Rent Variables" icon="location_city">
       <NumSlideInput
-        title="Rent Monthly Cost"
+        title="Monthly Cost"
         :type="CalcInputType.Dollar"
         :min="100"
         :max="15000"
         v-model="inputs.rent.priceMonth"
       >
         Rent paid each month. This accounts for rent inflation.
+      </NumSlideInput>
+      <NumSlideInput
+        title="Security Deposit Cost"
+        :type="CalcInputType.Dollar"
+        :min="0"
+        :max="15000"
+        v-model="inputs.rent.securityDep"
+      >
+        A deposit paid at the beginning of the rental agreement. Usually paid back at the end of the
+        rental period.
+      </NumSlideInput>
+      <NumSlideInput
+        title="Insurance Percentage Costs"
+        :type="CalcInputType.Percent"
+        :min="0"
+        :max="3"
+        v-model="inputs.rent.insurancePct"
+      >
+        Rental insurance, charged monthly, as a percentage of your rent. This accounts for rent
+        inflation.
       </NumSlideInput>
       <NumSlideInput
         title="Monthly Utilities Costs"
@@ -178,7 +198,7 @@ const inputs = computed({
         internet, etc. This accounts for general inflation.
       </NumSlideInput>
       <NumSlideInput
-        title="Rent Yearly Appreciation Rate"
+        title="Yearly Appreciation Rate"
         :type="CalcInputType.Percent"
         :min="-3"
         :max="10"

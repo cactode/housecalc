@@ -82,18 +82,23 @@ export function calcRent(vars: BasicVars): CalcRentOutput {
   for (let year: number = 0; year < vars.financial.sellYear; year++) {
     applyOpportunityCost(vars, paid)
 
+    if (year == 0) {
+      paid.expenses += vars.rent.securityDep
+    }
+
     const expensesRent = compounding(12 * vars.rent.priceMonth, vars.rent.apprecPct, year)
+    const expensesInsurance = expensesRent * vars.rent.insurancePct
     const expensesUtilities = compounding(
       12 * vars.rent.utilitiesMonth,
       vars.financial.inflatePct,
       year
     )
-    const expenses = expensesRent + expensesUtilities
-    paid.expenses += expenses
+    const expensesRecurring = expensesRent + expensesUtilities + expensesInsurance
+    paid.expenses += expensesRecurring
 
     // update list
     paids.push({ ...paid } as Paid)
-    recurrings.push(expenses)
+    recurrings.push(expensesRecurring)
   }
 
   const netLosses = paid.expenses + paid.opportunity
@@ -102,7 +107,8 @@ export function calcRent(vars: BasicVars): CalcRentOutput {
     paidTotal: paids,
     paidYearly: paidDerivative(paids),
     recurringYearly: recurrings,
-    netLosses: netLosses
+    netLosses: netLosses,
+    depositRevenue: vars.rent.securityDep
   }
 }
 

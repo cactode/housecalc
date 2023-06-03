@@ -51,6 +51,8 @@ export interface Rent {
   priceMonth: number
   utilitiesMonth: number
   apprecPct: number
+  insurancePct: number
+  securityDep: number
 }
 
 export interface Taxes {
@@ -717,7 +719,7 @@ export const House = {
 }
 
 function createBaseRent(): Rent {
-  return { priceMonth: 0, utilitiesMonth: 0, apprecPct: 0 }
+  return { priceMonth: 0, utilitiesMonth: 0, apprecPct: 0, insurancePct: 0, securityDep: 0 }
 }
 
 export const Rent = {
@@ -730,6 +732,12 @@ export const Rent = {
     }
     if (message.apprecPct !== 0) {
       writer.uint32(25).double(message.apprecPct)
+    }
+    if (message.insurancePct !== 0) {
+      writer.uint32(33).double(message.insurancePct)
+    }
+    if (message.securityDep !== 0) {
+      writer.uint32(41).double(message.securityDep)
     }
     return writer
   },
@@ -762,6 +770,20 @@ export const Rent = {
 
           message.apprecPct = reader.double()
           continue
+        case 4:
+          if (tag !== 33) {
+            break
+          }
+
+          message.insurancePct = reader.double()
+          continue
+        case 5:
+          if (tag !== 41) {
+            break
+          }
+
+          message.securityDep = reader.double()
+          continue
       }
       if ((tag & 7) === 4 || tag === 0) {
         break
@@ -775,7 +797,9 @@ export const Rent = {
     return {
       priceMonth: isSet(object.priceMonth) ? Number(object.priceMonth) : 0,
       utilitiesMonth: isSet(object.utilitiesMonth) ? Number(object.utilitiesMonth) : 0,
-      apprecPct: isSet(object.apprecPct) ? Number(object.apprecPct) : 0
+      apprecPct: isSet(object.apprecPct) ? Number(object.apprecPct) : 0,
+      insurancePct: isSet(object.insurancePct) ? Number(object.insurancePct) : 0,
+      securityDep: isSet(object.securityDep) ? Number(object.securityDep) : 0
     }
   },
 
@@ -784,6 +808,8 @@ export const Rent = {
     message.priceMonth !== undefined && (obj.priceMonth = message.priceMonth)
     message.utilitiesMonth !== undefined && (obj.utilitiesMonth = message.utilitiesMonth)
     message.apprecPct !== undefined && (obj.apprecPct = message.apprecPct)
+    message.insurancePct !== undefined && (obj.insurancePct = message.insurancePct)
+    message.securityDep !== undefined && (obj.securityDep = message.securityDep)
     return obj
   },
 
@@ -796,6 +822,8 @@ export const Rent = {
     message.priceMonth = object.priceMonth ?? 0
     message.utilitiesMonth = object.utilitiesMonth ?? 0
     message.apprecPct = object.apprecPct ?? 0
+    message.insurancePct = object.insurancePct ?? 0
+    message.securityDep = object.securityDep ?? 0
     return message
   }
 }

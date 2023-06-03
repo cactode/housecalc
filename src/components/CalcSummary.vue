@@ -26,7 +26,7 @@ const avgMonthlyRent = computed(
 )
 
 const houseNetGain = computed(() => props.calcHouse.sellRevenue - props.calcHouse.netLosses)
-const rentNetGain = computed(() => -props.calcRent.netLosses)
+const rentNetGain = computed(() => props.calcRent.depositRevenue - props.calcRent.netLosses)
 const houseIsBestGain = computed(() => houseNetGain.value > rentNetGain.value)
 </script>
 
@@ -139,11 +139,11 @@ const houseIsBestGain = computed(() => houseNetGain.value > rentNetGain.value)
             This is calculated by subtracting the final loan balance from the final value of the
             house.
             <br />
-            This does not apply to rent.
+            For renting, this is equal to the security deposit.
           </HelpTooltip>
         </td>
         <td class="text-right">{{ toCurrency(calcHouse.sellRevenue) }}</td>
-        <td class="text-right">-</td>
+        <td class="text-right">{{ toCurrency(calcRent.depositRevenue) }}</td>
       </tr>
       <tr>
         <td class="text-left">
@@ -178,9 +178,7 @@ const houseIsBestGain = computed(() => houseNetGain.value > rentNetGain.value)
           <span :class="houseIsBestGain ? '' : 'text-red-14'">{{ toCurrency(houseNetGain) }}</span>
         </td>
         <td class="text-right text-bold" style="font-size: 12pt">
-          <span :class="!houseIsBestGain ? '' : 'text-red-14'">{{
-            toCurrency(-calcRent.netLosses)
-          }}</span>
+          <span :class="!houseIsBestGain ? '' : 'text-red-14'">{{ toCurrency(rentNetGain) }}</span>
         </td>
       </tr>
     </tbody>

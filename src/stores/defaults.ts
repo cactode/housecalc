@@ -29,7 +29,9 @@ const DEFAULT_VARS: BasicVars = {
   rent: {
     priceMonth: 3000,
     utilitiesMonth: 100,
-    apprecPct: 0.032
+    apprecPct: 0.032,
+    insurancePct: 0.01,
+    securityDep: 500
   }
 }
 

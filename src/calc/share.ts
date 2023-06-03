@@ -3,7 +3,7 @@ import { getDefaultBasicVars, getDefaultMortgage } from '@/stores/defaults'
 import { copyToClipboard, type QVueGlobals } from 'quasar'
 import { AllVars } from '@/proto/vars'
 
-const PROTO_VERSION = 1
+const PROTO_VERSION = 2
 
 // uses a convoluted protobuf conversion to compactly encode the state of the calculator
 export function toQuery(vars: BasicVars, mortgages: Array<MortgageVars>) {

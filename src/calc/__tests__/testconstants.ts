@@ -29,7 +29,9 @@ export const TEST_INPUTS: BasicVars = {
   rent: {
     priceMonth: 3000,
     utilitiesMonth: 100,
-    apprecPct: 0.05
+    apprecPct: 0.05,
+    insurancePct: 0.01,
+    securityDep: 500
   }
 }
 

@@ -51,6 +51,8 @@ message Rent {
     double priceMonth = 1;
     double utilitiesMonth = 2;
     double apprecPct = 3;
+    double insurancePct = 4;
+    double securityDep = 5;
 }
 
 message Taxes {

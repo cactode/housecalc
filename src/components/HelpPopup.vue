@@ -91,6 +91,19 @@ const help = computed({
               <li><i>etc...</i></li>
             </ul>
           </div>
+          <br />
+          <div class="text-h6">Isn't this the same thing as the NY Times calculator?</div>
+          <div class="text-body1">
+            <s>Nope, this calculator definitely looks worse.</s>
+            <br /><br />
+            In all seriousness: I love the NY Times calculator and it's probably the superior tool
+            for quickly comparing renting to buying. This calculator, however, is also designed to
+            help you decide
+            <i>how</i> to buy your home. You can compare different filing statuses, different
+            mortgage types, refinancing strategies, etc. and see itemized breakdowns of your final
+            costs. It's not as elegant, but it is more detailed!
+          </div>
+          <br />
           <div class="text-h6">My state charges extra sales taxes. What about those?</div>
           <div class="text-body1">
             If you live in Washington (me too!), you're in luck. This calculator can apply
