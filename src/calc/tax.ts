@@ -1,5 +1,7 @@
 import type { TaxTable, CapitolGainsTaxTable, IncomeTaxTable } from '@/calc/types'
 
+const CAP_GAINS_MIN_HOLD_YEARS = 2;
+
 /**
  * Given a certain income and tax bracket, returns the amount of money you save on tax returns by deducting interest paid on a house.
  * The baseline tax is the better of the standard deduction or the itemized deduction without interest.
@@ -37,10 +39,13 @@ export function getInterestDeductionSavings(
 export function getCapitalGainsTax(
   income: number,
   profit: number,
+  sellYear: number,
   capGainTaxTable: CapitolGainsTaxTable
 ): number {
   const totalIncome = income + profit
-  const adjustedProfit = profit - capGainTaxTable.houseDeduction
+  // Need to hold house for at least this many years before deduction applies
+  const adjustment = sellYear >= CAP_GAINS_MIN_HOLD_YEARS ? capGainTaxTable.houseDeduction : 0
+  const adjustedProfit = profit - adjustment
   for (const { rate, threshold } of capGainTaxTable.table) {
     if (totalIncome > threshold) {
       return Math.max(0, rate * adjustedProfit)

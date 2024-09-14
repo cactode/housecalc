@@ -220,7 +220,7 @@ const inputs = computed({
             Tax Filing Status
             <HelpTooltip>
               Determines the tax brackets that will be used for income tax and capital gains tax
-              calculations. Tax brackets are from 2023.
+              calculations. Tax brackets are from 2024.
             </HelpTooltip>
           </q-item-label>
         </q-item-section>

@@ -68,6 +68,7 @@ export function applyHouseExpensesSelling(vars: BasicVars, paid: Paid) {
   const capitalGainsTax = getCapitalGainsTax(
     vars.financial.incomeYear,
     taxableProfit,
+    vars.financial.sellYear,
     vars.taxes.singleFiler ? CAPITAL_GAINS_TAX_TABLE_SINGLE : CAPITAL_GAINS_TAX_TABLE_JOINT
   )
   const totalTax = (vars.taxes.addReet ? reetTax : 0) + capitalGainsTax
